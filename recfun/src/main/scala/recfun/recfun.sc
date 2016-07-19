@@ -1,5 +1,3 @@
-import sun.jvm.hotspot.runtime.amd64.AMD64CurrentFrameGuess
-
 import scala.annotation.tailrec
 
 def abs(x: Double) : Double = if (x < 0) -x else x
