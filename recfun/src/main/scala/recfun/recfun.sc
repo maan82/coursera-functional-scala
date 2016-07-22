@@ -52,6 +52,15 @@ factorialTailRecursive(5, 1) == factorial(5)
 factorialTailRecursive(2, 1) == factorial(2)
 
 
+def sum(f: Int => Int):(Int, Int) => Int = {
+  def sumF(a: Int, b :Int):Int = {
+    if(a > b) 0
+    else f(a) + sum(f)(a+1, b)
+  }
+  sumF
+}
+
+sum(x=>x)(1, 3)
 
 
 
