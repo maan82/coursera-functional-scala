@@ -6,7 +6,12 @@ class Command(commandline:String) {
 
   def getCommand = line(0)
 
-  def is
+  def isCreateCanvas() : Boolean = {
+    if(getCommand == "C")
+      true
+    else
+      false
+  }
 }
 class Canvas(w:Int , h:Int) {
   def width = w
