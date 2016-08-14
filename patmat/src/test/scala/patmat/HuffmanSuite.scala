@@ -21,6 +21,11 @@ class HuffmanSuite extends FunSuite {
     }
   }
 
+  test("weight of a larger tree t2") {
+    new TestTrees {
+      assert(weight(t2) === 9)
+    }
+  }
 
   test("chars of a larger tree") {
     new TestTrees {
@@ -28,6 +33,17 @@ class HuffmanSuite extends FunSuite {
     }
   }
 
+  test("chars of tree t1") {
+    new TestTrees {
+      assert(chars(t1) === List('a','b'))
+    }
+  }
+
+  test("chars of tree leaf only") {
+    new TestTrees {
+      assert(chars(Leaf('a', 10)) === List('a'))
+    }
+  }
 
   test("string2chars(\"hello, world\")") {
     assert(string2Chars("hello, world") === List('h', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd'))
