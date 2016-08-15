@@ -81,13 +81,15 @@ object Huffman {
    */
     def times(chars: List[Char]): List[(Char, Int)] = times(chars, List())
 
-    def times(chars:List[Char], acc:List[(Char, Int)]) = {
-      if(chars.isEmpty) {
-        acc
-      } else {
-        acc match {
-          case (chars.head, x) => acc
-        }
+    def times(chars:List[Char], acc:List[(Char, Int)]): List[(Char, Int)] = {
+      chars match {
+        case head::tail =>
+          var filter:List[(Char, Int)] = acc.filter((p: (Char, Int)) => p._1 == head)
+          if(filter.isEmpty) {
+            filter = List((head, 0))
+          }
+          times(tail, (filter(0)._1,  filter(0)._2 + 1):: acc.filter((p:(Char, Int)) => p._1 != head))
+        case _ => acc
       }
     }
   

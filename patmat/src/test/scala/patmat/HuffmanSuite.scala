@@ -50,6 +50,10 @@ class HuffmanSuite extends FunSuite {
   }
 
 
+  test("times") {
+    assert(times(string2Chars("hello, wol")).sortBy(_._1).sortBy(_._2) === List(('h', 1),('e', 1),('l', 3),('o', 2),(',', 1),(' ', 1),('w', 1)).sortBy(_._1).sortBy(_._2))
+  }
+
   test("makeOrderedLeafList for some frequency table") {
     assert(makeOrderedLeafList(List(('t', 2), ('e', 1), ('x', 3))) === List(Leaf('e',1), Leaf('t',2), Leaf('x',3)))
   }
