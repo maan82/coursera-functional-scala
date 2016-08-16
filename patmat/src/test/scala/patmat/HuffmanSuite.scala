@@ -58,6 +58,31 @@ class HuffmanSuite extends FunSuite {
     assert(makeOrderedLeafList(List(('t', 2), ('e', 1), ('x', 3))) === List(Leaf('e',1), Leaf('t',2), Leaf('x',3)))
   }
 
+  test("makeOrderedLeafList for some frequency table big") {
+    assert(makeOrderedLeafList(List(('t', 2), ('e', 5), ('x', 4), ('o', 1), ('r', 3))) === List(Leaf('o',1), Leaf('t',2), Leaf('r',3), Leaf('x',4), Leaf('e',5)))
+  }
+
+  test("makeOrderedLeafList for some frequency table empty") {
+    assert(makeOrderedLeafList(List()) === List())
+  }
+
+  test("makeOrderedLeafList for some frequency table one") {
+    assert(makeOrderedLeafList(List(('t', 2))) === List(Leaf('t',2)))
+  }
+
+  test("singleton") {
+    assert(singleton(List(new Leaf('t', 2))) === true)
+  }
+
+  test("singleton empty") {
+    assert(singleton(List()) === false)
+  }
+
+  test("singleton non empty") {
+    assert(singleton(List(new Leaf('t', 2), new Leaf('s', 2))) === false)
+  }
+
+
 
   test("combine of some leaf list") {
     val leaflist = List(Leaf('e', 1), Leaf('t', 2), Leaf('x', 4))
@@ -70,5 +95,16 @@ class HuffmanSuite extends FunSuite {
       assert(decode(t1, encode(t1)("ab".toList)) === "ab".toList)
     }
   }
+
+  test("createCodeTree") {
+    assert(createCodeTree(string2Chars("hello, world")) === List('h', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd'))
+  }
+
+  test("decode") {
+    val tree:CodeTree = createCodeTree(string2Chars("AAOCDAD"))
+
+    assert(decode(tree, List(1)) == List('t', 't', 'e', 'e', 't'))
+  }
+
 
 }
