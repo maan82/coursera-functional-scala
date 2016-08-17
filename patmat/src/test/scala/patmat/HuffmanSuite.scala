@@ -96,15 +96,16 @@ class HuffmanSuite extends FunSuite {
     }
   }
 
-  test("createCodeTree") {
-    assert(createCodeTree(string2Chars("hello, world")) === List('h', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd'))
+  test("decode and encode a very short text should be identity big") {
+    new TestTrees {
+      assert(decode(t2, encode(t2)("dab".toList)) === "dab".toList)
+    }
   }
 
-  test("decode") {
-    val tree:CodeTree = createCodeTree(string2Chars("AAOCDAD"))
-
-    assert(decode(tree, List(1)) == List('t', 't', 'e', 'e', 't'))
+  test("decode and quickencode a very short text should be identity big") {
+    new TestTrees {
+      assert(decode(t2, quickEncode(t2)("dab".toList)) === "dab".toList)
+    }
   }
-
 
 }
